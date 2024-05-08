@@ -24,7 +24,7 @@
   },
   "autoload": {
     "psr-4": {
-      "dgrigg\\migrationassistant\\": "src/"
+      "cedricssl247\\migrationassistant\\": "src/"
     }
   },
   "extra": {
