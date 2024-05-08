@@ -36,7 +36,7 @@
     "hasCpSection": true
   },
   "minimum-stability": "dev",
-  "prefer-stable": false,
+  "prefer-stable": true,
   "require-dev": {
     "craftcms/rector": "dev-master"
   }
