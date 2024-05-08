@@ -33,7 +33,6 @@
     "developer": "Ced",
     "class": "dgrigg\\migrationassistant\\MigrationAssistant",
     "hasCpSettings": false,
-    "hasCpSection": true,
-    "changelogUrl": "https://raw.githubusercontent.com/dgrigg/craft-migration-assistant/master/CHANGELOG.md"
+    "hasCpSection": true
   }
 }
