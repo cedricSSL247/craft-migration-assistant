@@ -34,5 +34,10 @@
     "class": "dgrigg\\migrationassistant\\MigrationAssistant",
     "hasCpSettings": false,
     "hasCpSection": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": false,
+  "require-dev": {
+    "craftcms/rector": "dev-main"
   }
 }
