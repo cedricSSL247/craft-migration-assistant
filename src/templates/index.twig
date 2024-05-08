@@ -49,10 +49,10 @@
     {% set tabs = tabs | merge({ assetVolumes: { label: 'Asset Volumes'|t, url: '#assetVolumes' } }) %}
 {% endif %}
 
-{% set imageTransforms = craft.app.getAssetTransforms().getAllTransforms() -%}
+{#% set imageTransforms = craft.app.getAssetTransforms().getAllTransforms() -%}
 {% if imageTransforms is not empty %}
     {% set tabs = tabs | merge({ imageTransforms: { label: 'Image Transforms'|t, url: '#imageTransforms' } }) %}
-{% endif %}
+{% endif %#}
 
 
 {% if CraftEdition > CraftSolo %}

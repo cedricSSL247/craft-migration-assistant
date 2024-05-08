@@ -96,6 +96,7 @@ class EntriesContent extends BaseContentMigration
               $value['id'] = $primaryEntry->id;
               $this->localizeData($primaryEntry, $value);
             } else {
+                
               $siteEntry = Entry::find()
                 ->section($data['section'])
                 ->slug($data['slug'])
@@ -109,9 +110,12 @@ class EntriesContent extends BaseContentMigration
             }
 
             $entry = $this->createModel($value);
+            
             $this->getSourceIds($value);
+            
             $fields = array_key_exists('fields', $value) ? $value['fields'] : [];
             $this->validateImportValues($fields);
+            
             $entry->setFieldValues($fields);
 
             $value['fields'] = $fields;
@@ -163,7 +167,7 @@ class EntriesContent extends BaseContentMigration
 
         $entry->slug = $data['slug'];
         $entry->postDate = is_null($data['postDate']) ? '' : new DateTime($data['postDate']['date'], new DateTimeZone($data['postDate']['timezone']));
-        $entry->expiryDate = is_null($data['expiryDate']) ? '' : new DateTime($data['expiryDate']['date'], new DateTimeZone($data['expiryDate']['timezone']));
+        $entry->expiryDate = is_null($data['expiryDate']) ? null : new DateTime($data['expiryDate']['date'], new DateTimeZone($data['expiryDate']['timezone']));
 
         $entry->enabled = $data['enabled'];
         $entry->enabledForSite = $data['enabledForSite'];

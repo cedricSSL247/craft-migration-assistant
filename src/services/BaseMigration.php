@@ -200,7 +200,7 @@ abstract class BaseMigration extends Component implements IMigrationService
         $newElement['fieldLayout'] = array();
         foreach ($fieldLayout->getTabs() as $tab) {
           $newElement['fieldLayout'][$tab->name] = array();
-          foreach ($tab->getFields() as $tabField) {
+          foreach ($tab->fields() as $tabField) {
             $newElement['fieldLayout'][$tab->name][] = $tabField->handle;
             if ($tabField->required) {
               $newElement['requiredFields'][] = $tabField->handle;

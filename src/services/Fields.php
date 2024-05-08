@@ -107,7 +107,7 @@ class Fields extends BaseMigration
    */
   public function createModel(array $data)
   {
-    $fieldsService = Craft::$app->getFields();
+    $fieldsService = Craft::$app->fields();
 
     $group = $this->getFieldGroupByName($data['group']);
     if (!$group) {
@@ -257,7 +257,7 @@ class Fields extends BaseMigration
       } else {
         $blockId = 'new';
       }
-      foreach ($blockType->getFields() as $field) {
+      foreach ($blockType->fields() as $field) {
         if ($includeID) {
           $fieldId = $field->id;
         } else {
@@ -294,6 +294,7 @@ class Fields extends BaseMigration
    */
   private function getNeoField(&$newField, $fieldId, $includeID = false)
   {
+
     $neo = Craft::$app->plugins->getPlugin('neo');
     $groups = $neo->blockTypes->getGroupsByFieldId($fieldId);
     if (count($groups)) {
@@ -302,7 +303,7 @@ class Fields extends BaseMigration
       foreach ($groups as $group) {
         $newField['typesettings']['groups']['uid' . $groupId] = [
           'name' => $group->name,
-          'sortOrder' => $group->sortOrder,
+          'sortOrder' => $group->sortOrder
         ];
         $groupId++;
       }
@@ -335,7 +336,7 @@ class Fields extends BaseMigration
         $fieldLayout = $blockType->getFieldLayout();
         foreach ($fieldLayout->getTabs() as $tab) {
           $newField['typesettings']['blockTypes'][$blockId]['fieldLayout'][$tab->name] = array();
-          foreach ($tab->getFields() as $tabField) {
+          foreach ($tab->fields() as $tabField) {
             $newField['typesettings']['blockTypes'][$blockId]['fieldLayout'][$tab->name][] = $this->exportItem($tabField->id, true);
             if ($tabField->required) {
               $newField['typesettings']['blockTypes'][$blockId]['requiredFields'][] = Craft::$app->fields->getFieldById($tabField->id)->handle;
