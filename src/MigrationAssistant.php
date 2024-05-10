@@ -118,7 +118,7 @@ class MigrationAssistant extends Plugin
 
         // Register actions only if Solo license or user has rights
         if (Craft::$app->getEdition() > Craft::Solo && (Craft::$app->user->checkPermission('createContentMigrations') == true || Craft::$app->getUser()->getIsAdmin())
-           || Craft::$app->getEdition() === Craft::Solo) {
+           || Craft::$app->getEdition() === Craft::Pro) {
            // Register Element Actions
            Event::on(Entry::class, Element::EVENT_REGISTER_ACTIONS,
               function (RegisterElementActionsEvent $event) {
